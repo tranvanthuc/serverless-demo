@@ -4,5 +4,5 @@ userFunc:
     DB_NAME: 'bankdb'
   events:
     - http:
-        path: user/{proxy+}
+        path: /{proxy+}
         method: ANY
