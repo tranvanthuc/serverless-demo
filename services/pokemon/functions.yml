@@ -1,0 +1,20 @@
+pokemonFunc:
+  handler: /services/pokemon/index.handler
+  environment:
+    DB_NAME: 'laraveldb'
+  events:
+    - http:
+        path: pokemon
+        method: get
+    - http:
+        path: pokemon/{id}
+        method: get
+    - http:
+        path: pokemon
+        method: post
+    - http:
+        path: pokemon/{id}
+        method: put
+    - http:
+        path: pokemon/{id}
+        method: delete

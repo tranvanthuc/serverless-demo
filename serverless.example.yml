@@ -1,36 +1,21 @@
-service: pokemon-service
+service: demo-service
 
 provider:
   name: aws
   runtime: nodejs8.10
   stage: ${opt:stage, 'dev'}
   region: ap-northeast-1
+  versionFunctions: true
   memorySize: 512
   environment:
     DB_HOST: ''
     DB_USERNAME: ''
     DB_PASSWORD: ''
-    DB_NAME: ''
 
 functions:
-  pokemonFunc:
-    handler: index.handler
-    events:
-      - http:
-          path: pokemon
-          method: get
-      - http:
-          path: pokemon/{id}
-          method: get
-      - http:
-          path: pokemon
-          method: post
-      - http:
-          path: pokemon/{id}
-          method: put
-      - http:
-          path: pokemon/{id}
-          method: delete
+  - ${file(./services/pokemon/functions.yml)}
+  - ${file(./services/user/functions.yml)}
+  - ${file(./services/helloWorld/functions.yml)}
 
 plugins:
   - serverless-offline

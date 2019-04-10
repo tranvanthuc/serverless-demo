@@ -1,0 +1,8 @@
+userFunc:
+  handler: /services/user/index.handler
+  environment:
+    DB_NAME: 'bankdb'
+  events:
+    - http:
+        path: user/{proxy+}
+        method: ANY
