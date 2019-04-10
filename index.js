@@ -28,6 +28,14 @@ app.get("/pokemon/", (req, res) => {
   });
 });
 
+app.get("/test/", (req, res) => {
+  const response = {
+    data: "Test",
+    message: "Test message"
+  };
+  res.send(response);
+});
+
 // Handle pokemon GET route for specific pokemon
 app.get("/pokemon/:id", (req, res) => {
   const id = req.params.id;
