@@ -1,0 +1,2 @@
+helloWorld:
+    handler: index.handler
