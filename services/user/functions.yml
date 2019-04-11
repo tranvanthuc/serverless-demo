@@ -1,8 +1,24 @@
 userFunc:
-  handler: /services/user/index.handler
-  environment:
-    DB_NAME: 'bankdb'
-  events:
-    - http:
-        path: /{proxy+}
-        method: ANY
+    handler: index.handler
+    environment:
+      DB_NAME: 'bankdb'
+    events:
+      - http:
+          path: user
+          method: get
+      - http:
+          path: user/{id}
+          method: get
+      - http:
+          path: user
+          method: post
+      - http:
+          path: user/{id}
+          method: put
+      - http:
+          path: user/{id}
+          method: delete
+    # events:
+    #   - http:
+    #       path: /{proxy+}
+    #       method: ANY

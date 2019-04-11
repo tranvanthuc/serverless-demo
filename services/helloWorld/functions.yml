@@ -1,2 +1,2 @@
 helloWorld:
-    handler: /services/helloWorld/index.handler
+    handler: index.handler
