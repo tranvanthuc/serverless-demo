@@ -1,2 +1,16 @@
-helloWorld:
-    handler: index.handler
+hello:
+    handler: index.hello
+    events:
+      - s3:
+          bucket: s3-trigger-serverless
+          event: s3:ObjectCreated:*
+          rules:
+            - suffix: .txt
+bye:
+    handler: index.bye
+    events:
+      - s3:
+          bucket: s3-trigger-serverless
+          event: s3:ObjectRemoved:*
+          rules:
+            - suffix: .txt

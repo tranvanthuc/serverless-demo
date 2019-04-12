@@ -1,25 +1,23 @@
-var AWS = require("aws-sdk");
-var s3 = new AWS.S3();
+"use strict";
 
-var bucketName = process.env.S3_BUCKET;
-
-exports.handler = function(event, context, callback) {
-  console.log(JSON.stringify(event.Records[0].s3));
+module.exports.hello = (event, context, callback) => {
+  const bucket = event.Records[0].s3.bucket.name;
   const key = event.Records[0].s3.object.key;
-  console.log("key", key);
 
-  //Retrieve the file from your bucket
-  s3.getObject(
-    {
-      Bucket: bucketName,
-      Key: key
-    },
-    function(err, data) {
-      if (err) {
-        console.log(err, err.stack);
-      } else {
-        console.log(JSON.stringify(data));
-      }
-    }
-  );
+  console.log(bucket);
+  console.log(key);
+
+  console.log(`A new file ${key} was created in the bucket ${bucket}`);
+  callback(null);
+};
+
+module.exports.bye = (event, context, callback) => {
+  const bucket = event.Records[0].s3.bucket.name;
+  const key = event.Records[0].s3.object.key;
+
+  console.log(bucket);
+  console.log(key);
+
+  console.log(`A new file ${key} was removed in the bucket ${bucket}`);
+  callback(null);
 };
